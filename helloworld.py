@@ -204,6 +204,7 @@ def menuHelp():
 				"╠══[ Media Command ]" + "\n" + \
 				"╠ " + key + "InstaInfo 「Username」" + "\n" + \
 				"╠ " + key + "InstaStory 「Username」" + "\n" + \
+				"╠ " + key + "Image Coursel" + "\n" + \
 				"╠ " + key + "Quotes" + "\n" + \
 				"╠ " + key + "SearchImage 「Search」" + "\n" + \
 				"╠ " + key + "SearchMusic 「Search」" + "\n" + \
@@ -1125,6 +1126,25 @@ def clientBot(op):
 										client.sendMessage(to, "Gagal menghapus target")
 
 
+						elif cmd.startswith("image coursel"):
+							url = "https://i.pinimg.com/originals/fc/b7/a5/fcb7a59766ad30a4160cdebbba53e16b.gif"
+							data = {
+								"type": "template",
+								"altText": "this is a image carousel template",
+								"template": {
+									"type": "image_carousel",
+									"columns": [
+										{
+											"imageUrl": url,
+											"action": {
+												"type": "uri",
+												"uri": url
+											}
+										}
+									]
+								}
+							}
+							client.postJungelpang(to, data)
 						elif cmd.startswith("instainfo"):
 							sep = text.split(" ")
 							txt = text.replace(sep[0] + " ","")
