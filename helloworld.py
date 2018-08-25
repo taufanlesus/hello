@@ -460,25 +460,13 @@ def clientBot(op):
 								client.sendMessage(to, "Berhasil mengubah set key command menjadi : 「{}」".format(str(key).lower()))
 						elif cmd == "help":
 							helpMessage = menuHelp()
-							contact = client.getContact(sender)
-							icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
-							name = contact.displayName
-							link = "https://pa1.narvii.com/6547/d29a5e4bb3405d83fc15cf50ec057f41640618a8_hq.gif"
-							client.sendFooter(to, helpMessage, icon, name, link)
+							client.sendMessage(to, helpMessage)
 						elif cmd == "texttospeech":
 							helpTextToSpeech = menuTextToSpeech()
-							contact = client.getContact(sender)
-							icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
-							name = contact.displayName
-							link = "https://pa1.narvii.com/6547/d29a5e4bb3405d83fc15cf50ec057f41640618a8_hq.gif"
-							client.sendFooter(to, helpTextToSpeech, icon, name, link)
+							client.sendMessage(to, helpTextToSpeech)
 						elif cmd == "translate":
 							helpTranslate = menuTranslate()
-							contact = client.getContact(sender)
-							icon = "http://dl.profile.line-cdn.net/{}".format(contact.pictureStatus)
-							name = contact.displayName
-							link = "https://pa1.narvii.com/6547/d29a5e4bb3405d83fc15cf50ec057f41640618a8_hq.gif"
-							client.sendFooter(to, helpTranslate, icon, name, link)
+							client.sendMessage(to, helpTranslate)
 
 
 						elif cmd == "status":
@@ -1150,9 +1138,6 @@ def clientBot(op):
 							txt = text.replace(sep[0] + " ","")
 							url = requests.get("http://rahandiapi.herokuapp.com/instainfo/{}?key=betakey".format(txt))
 							data = url.json()
-							icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/599px-Instagram_icon.png"
-							name = "Instagram"
-							link = "https://www.instagram.com/{}".format(data["result"]["username"])
 							result = "╔══[ Instagram Info ]"
 							result += "\n╠ Name : {}".format(data["result"]["name"])
 							result += "\n╠ Username: {}".format(data["result"]["username"])
@@ -1163,7 +1148,7 @@ def clientBot(op):
 							result += "\n╠ Post : {}".format(data["result"]["mediacount"])
 							result += "\n╚══[ Finish ]"
 							client.sendImageWithURL(to, data["result"]["url"])
-							client.sendFooter(to, result, icon, name, link)
+							client.sendMessage(to, result)
 						elif cmd.startswith("instastory "):
 							sep = text.split(" ")
 							query = text.replace(sep[0] + " ","")
